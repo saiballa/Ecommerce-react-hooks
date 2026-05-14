@@ -7,7 +7,7 @@ import MySlider from "../swiper/swiper";
 const Home:React.FC=()=>{
 
     const [productList,setProductList] = useState<FetchDataState[]>([]);
-     const [sliceArray,setSliceArray] = useState<FetchDataState[]>([]);
+    const [sliceArray,setSliceArray] = useState<FetchDataState[]>([]);
     const [category,setCategory] = useState<string>("");
     const [searchProductInput,setSearchProductInput] = useState<string>("");
     const [isLoading,setLoading] = useState<boolean>(false);
