@@ -18,6 +18,7 @@ const Home:React.FC=()=>{
 
     const dataFetching = async()=>{
       setLoading(true);
+      setShowError("");
       try {
         const res = await allProducts();
         setProductList(res);
