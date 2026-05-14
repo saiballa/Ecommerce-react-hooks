@@ -188,9 +188,33 @@ const Home:React.FC=()=>{
                           ))}
                       </>
                     ) : showError ? (
-                      <div>
+                      <div className="flex items-center justify-center min-h-[300px]">
+    
+                      <div className="bg-red-50 border border-red-200 rounded-2xl p-8 text-center shadow-md max-w-md w-full">
+                        
+                        <div className="text-5xl mb-4">⚠️</div>
 
+                        <h2 className="text-2xl font-bold text-red-600 mb-2">
+                          Failed to Fetch Products
+                        </h2>
+
+                        <p className="text-gray-600 mb-4">
+                          Something went wrong while loading the products.
+                        </p>
+
+                        <p className="text-sm text-red-500 bg-red-100 rounded-lg px-3 py-2 inline-block">
+                          {showError}
+                        </p>
+
+                        <button
+                          onClick={() => window.location.reload()}
+                          className="mt-6 bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-xl transition-all duration-300"
+                        >
+                          Try Again
+                        </button>
                       </div>
+
+                    </div>
                     ) : (
                       <div className="col-span-full flex items-center justify-center py-20">
                         <p className="text-xl text-gray-500 font-medium">
