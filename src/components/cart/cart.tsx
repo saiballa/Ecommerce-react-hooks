@@ -1,4 +1,4 @@
-import React,{useContext, useMemo,useCallback} from "react";
+import React,{useContext, useMemo,useCallback, useEffect} from "react";
 import { FormContext } from "../../stateAndAction/appContextProviders";
 import { useNavigate } from "react-router-dom";
 
@@ -27,11 +27,20 @@ const CartPage:React.FC=()=>{
             return
         }else{
             dispatch({type:"clear_cart"})
+            localStorage.removeItem("cartlist");
+            localStorage.removeItem("noOfItems");
             navigate("/orders");
         }
     }
     
     const handleOrders = useCallback(()=> OrdersFun(),[]);
+
+    useEffect(()=>{
+        if(state.cartList.length > 0){
+            localStorage.setItem("cartlist",JSON.stringify(state.cartList));
+            localStorage.setItem("noOfItems",JSON.stringify(state.no_Of_Items));
+        }
+    },[state.cartList])
 
     return(
         <>

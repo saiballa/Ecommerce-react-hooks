@@ -1,8 +1,19 @@
-import React from "react";
+import React,{useContext,useEffect} from "react";
+import { FormContext } from "../../stateAndAction/appContextProviders";
 import { FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const InfoSubmitSuccess:React.FC = () => {
+
+  const context = useContext(FormContext);
+  if(!context) return;
+  const{state} = context;
+
+  useEffect(()=>{
+    localStorage.setItem("phone",JSON.stringify(state.data.userInfo.phone));
+    localStorage.setItem("address",JSON.stringify(state.data.address));
+  },[]);
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-10">
       

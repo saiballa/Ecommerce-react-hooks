@@ -10,8 +10,21 @@ import CartPage from "../components/cart/cart";
 import AccountPage from "../components/account/account";
 import OrderSuccessPage from "../components/order/ordersPage";
 import InfoSubmitSuccess from "../components/infoSubmit/accountInfoSubmit";
+import Registration from "../components/registration/registartion";
+import LoginPage from "../components/login/login";
+import { Outlet,Navigate } from "react-router-dom";
 
 const CreateRoutes:React.FC=()=>{
+
+    const PublicWrapper = ()=>{
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    return !token ? <Outlet/> : <Navigate to="/" replace/>;
+};
+
+const PrivateWrapper = ()=>{
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    return token ? <Outlet/> : <Navigate to="/login" replace/>;
+};
 
     const router = createBrowserRouter([
         {
@@ -19,17 +32,31 @@ const CreateRoutes:React.FC=()=>{
             element:<Layout/>,
             children:[
                 {index:true,element:<WelcomePage/>},
-                {path:"/personalInfo",element:<PersonalInfoPage/>},
-                {path:"/addressInfo",element:<AddressPage/>},
-                {path:"/review",element:<ReviewPage/>},
                 {path:"/product/:id",element:<ProductsDeatilsPage/>},
-                {path:"/cart",element:<CartPage/>},
-                {path:"/account",element:<AccountPage/>},
-                {path:"/orders",element:<OrderSuccessPage/>},
-                {path:"/infoSubmit",element:<InfoSubmitSuccess/>},
+                {
+                    element:<PublicWrapper/>,
+                    children:[
+                        {path:"/register",element:<Registration/>},
+                        {path:"/login",element:<LoginPage/>},
+                    ]
+                },
+                {
+                    element:<PrivateWrapper/>,
+                    children:[
+                        {path:"/personalInfo",element:<PersonalInfoPage/>},
+                        {path:"/addressInfo",element:<AddressPage/>},
+                        {path:"/review",element:<ReviewPage/>},
+                        {path:"/cart",element:<CartPage/>},
+                        {path:"/account",element:<AccountPage/>},
+                        {path:"/orders",element:<OrderSuccessPage/>},
+                        {path:"/infoSubmit",element:<InfoSubmitSuccess/>},
+                    ]
+                }
             ]
         }
     ])
+
+    
 
     return(
         <>

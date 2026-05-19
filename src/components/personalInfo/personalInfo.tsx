@@ -121,6 +121,7 @@ const PersonalInfoPage: React.FC = () => {
 
             <button
               type="button"
+              disabled
               onClick={() =>
                 dispatch({
                   type: "update_Field",
@@ -130,7 +131,7 @@ const PersonalInfoPage: React.FC = () => {
                   },
                 })
               }
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-2xl font-medium transition shadow-md hover:shadow-lg"
+              className="bg-blue-600 disabled:bg-blue-300 cursor-not-allowed hover:bg-blue-700 text-white px-6 py-4 rounded-2xl font-medium transition shadow-md hover:shadow-lg"
             >
               Save
             </button>
@@ -154,6 +155,7 @@ const PersonalInfoPage: React.FC = () => {
 
             <button
               type="button"
+              disabled
               onClick={() =>
                 dispatch({
                   type: "update_Field",
@@ -163,7 +165,7 @@ const PersonalInfoPage: React.FC = () => {
                   },
                 })
               }
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-2xl font-medium transition shadow-md hover:shadow-lg"
+              className="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-300 cursor-not-allowed text-white px-6 py-4 rounded-2xl font-medium transition shadow-md hover:shadow-lg"
             >
               Save
             </button>

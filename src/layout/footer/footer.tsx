@@ -61,26 +61,29 @@ const Footer:React.FC=()=>{
                 </div>
 
                 
+                {/* Newsletter */}
                 <div className="bg-gray-50 rounded-xl p-5 shadow-sm hover:shadow-md transition">
                 <h3 className="text-lg font-semibold text-gray-800 mb-3">
                     Newsletter
                 </h3>
 
-                <p className="text-sm text-gray-600 mb-4">
-                    Subscribe to get latest updates and offers.
-                </p>
+                <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="hover:text-blue-600 cursor-pointer transition">
+                    Latest Offers
+                    </li>
 
-                <div className="flex flex-col gap-3">
-                    <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
+                    <li className="hover:text-blue-600 cursor-pointer transition">
+                    Weekly Updates
+                    </li>
 
-                    <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition">
-                    Subscribe
-                    </button>
-                </div>
+                    <li className="hover:text-blue-600 cursor-pointer transition">
+                    New Arrivals
+                    </li>
+
+                    <li className="hover:text-blue-600 cursor-pointer transition">
+                    Exclusive Discounts
+                    </li>
+                </ul>
                 </div>
             </div>
 

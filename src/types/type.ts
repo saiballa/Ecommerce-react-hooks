@@ -43,17 +43,28 @@ type ActionPayload =
   | { fieldName: UserInfoFields; value: string }
   | { fieldName: AddressFields; value: string };
 
-export type navigateSteps = {type:"update_Field",payload:ActionPayload} | {type:"current_step",payload:string} | {type:"add_Item",payload:FetchDataState} | {type:"remove_item",payload:number} | {type:"add_quantity",payload:number} | {type:"remove_Qyantity",payload:number} | {type:"clear_cart"};
+type logginUserType = {
+    name:string;
+    email:string;
+}
+
+type logoutUser = {
+    logoutStatus:boolean;
+    navigateUser:null
+}
+
+export type navigateSteps = {type:"update_Field",payload:ActionPayload} | {type:"current_step",payload:string} | {type:"add_Item",payload:FetchDataState} | {type:"remove_item",payload:number} | {type:"add_quantity",payload:number} | {type:"remove_Qyantity",payload:number} | {type:"clear_cart"} | {type:"set_Auth",payload:string} | {type:"set_logginUser",payload:logginUserType} |{type:"logOut",payload:logoutUser};
 
 export interface FormStateData{
+    authState:{
+        isLoggedIn:boolean;
+        navigateHome:string | null;
+    },
     data:{
         userInfo:PersonalInfo,
         address:AddressInfo
     },
     currentPage:string | null,
-    navigate_Previous_Page_status:boolean,
-    navigate_Next_Page_status:boolean,
     cartList:CartListData[],
     no_Of_Items:number,
 }
-

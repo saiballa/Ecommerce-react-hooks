@@ -1,25 +1,45 @@
 import type { FormStateData,navigateSteps } from "../types/type";
- 
 
-export const initialState:FormStateData = {
-    data:{
-        userInfo:{
-            name:null,
-            email:null,
-            phone:null,
-        },
-        address:{
+const userName = localStorage.getItem("name");
+const userEmail = localStorage.getItem("email");
+const totalListItems = localStorage.getItem("noOfItems") || 0;
+const userPhone = localStorage.getItem("phone");
+const getAddressDeatils = ()=>{
+    const details = localStorage.getItem("address");
+    return details ? JSON.parse(details) : {
             street:null,
             district:null,
             city:null,
             country:null,
+        };
+}
+const addressDetails = getAddressDeatils();
+const giveCartList = ()=>{
+    const cartlistData = localStorage.getItem("cartlist");
+    return cartlistData ? JSON.parse(cartlistData) : [];
+}
+
+export const initialState:FormStateData = {
+    authState:{
+        isLoggedIn:false,
+        navigateHome:null,
+    },
+    data:{
+        userInfo:{
+            name: userName ||null,
+            email:userEmail || null,
+            phone:userPhone || null,
+        },
+        address:{
+            street:addressDetails.street,
+            district:addressDetails.district,
+            city:addressDetails.city,
+            country:addressDetails.country,
         }
     },
     currentPage:null,
-    navigate_Next_Page_status:false,
-    navigate_Previous_Page_status:false,
-    cartList:[],
-    no_Of_Items:0,
+    cartList:giveCartList(),
+    no_Of_Items:Number(totalListItems),
 }
 
 
@@ -129,6 +149,24 @@ export const formReducer = (state:FormStateData,action:navigateSteps)=>{
             case "clear_cart":
                 return {...state,cartList:[],no_Of_Items:0}
 
+            case "set_Auth":
+                return{...state,authState:{
+                    ...state.authState,isLoggedIn:true,navigateHome:action.payload,
+                }}
+
+            case "set_logginUser":
+                return{
+                    ...state,data:{
+                        ...state.data,userInfo:{
+                            ...state.data.userInfo,name:action.payload?.name,email:action.payload?.email
+                        }
+                    }
+                }
+
+            case "logOut":
+                 return{...state,authState:{
+                    ...state.authState,isLoggedIn:action.payload.logoutStatus,navigateHome:action.payload.navigateUser
+                }}
         default:
             return state;
     }

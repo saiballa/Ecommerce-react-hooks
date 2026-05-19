@@ -10,6 +10,8 @@ const ProductsDeatilsPage:React.FC=()=>{
     const [loading,setLoading] = useState<boolean>(false);
     const [showError,setShowError] = useState<string>("");
     const {id} = useParams<{id:string}>();
+    const userName = localStorage.getItem("name");
+    const userEmail = localStorage.getItem("email");
 
     const context = useContext(FormContext);
         if(!context) return;
@@ -92,7 +94,12 @@ const ProductsDeatilsPage:React.FC=()=>{
 
                     <button
                     onClick={() => {
-                        dispatch({ type: "add_Item", payload: data });
+                         if(userName && userEmail){
+                                dispatch({ type: "add_Item", payload: data });
+                            }else{
+                                alert("You are not an authenticated user to add products in cart!");
+                                return;
+                            }
                     }}
                     className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
                     >
