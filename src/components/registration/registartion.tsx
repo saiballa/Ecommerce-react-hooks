@@ -35,6 +35,7 @@ const Registration:React.FC=()=>{
                 localStorage.setItem("email",response?.data?.email);
                 toast.success(response?.message || "User logged in successfully");
                 dispatch({type:"set_Auth",payload:"/"});
+                dispatch({type:"set_logginUser",payload:{name:response?.data?.name,email:response?.data?.email}})
                 reset();
             } catch (error) {
                 if(error instanceof Error){

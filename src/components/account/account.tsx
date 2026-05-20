@@ -16,6 +16,7 @@ const AccountPage:React.FC = () => {
       localStorage.removeItem("phone");
       localStorage.removeItem("address");
       dispatch({type:"logOut",payload:{logoutStatus:false,navigateUser:null}})
+      dispatch({type:"clear_data",payload:null});
       navigate("/login");
     }
         
@@ -53,25 +54,24 @@ const AccountPage:React.FC = () => {
         {/* Right Buttons */}
 <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
 
-  {/* Edit Button */}
-  <button className="w-full sm:w-auto">
-    <Link
-      to={"/personalInfo"}
-      className="flex items-center justify-center px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg border border-blue-600 min-w-[160px]"
-    >
-      Edit Profile
-    </Link>
-  </button>
+      {/* Edit Button */}
+      <button className="w-full sm:w-auto">
+        <Link
+          to={"/personalInfo"}
+          className="flex items-center justify-center px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold tracking-wide transition-all duration-300 shadow-md hover:shadow-lg border border-blue-600 min-w-[160px]"
+        >
+          Edit Profile
+        </Link>
+      </button>
 
-  {/* Logout Button */}
-  <button
-    onClick={handleLoggOut}
-    className="flex items-center justify-center px-6 py-3 rounded-xl bg-white hover:bg-red-50 text-red-500 hover:text-red-600 font-semibold tracking-wide border border-red-200 hover:border-red-400 transition-all duration-300 shadow-sm hover:shadow-md min-w-[160px]"
-  >
-    Logout
-  </button>
-
-</div>
+      {/* Logout Button */}
+      <button
+        onClick={handleLoggOut}
+        className="flex items-center justify-center px-6 py-3 rounded-xl bg-white hover:bg-red-50 text-red-500 hover:text-red-600 font-semibold tracking-wide border border-red-200 hover:border-red-400 transition-all duration-300 shadow-sm hover:shadow-md min-w-[160px]"
+      >
+        Logout
+      </button>
+    </div>
 
     </div>
 

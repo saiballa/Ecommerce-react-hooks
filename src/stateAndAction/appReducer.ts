@@ -167,6 +167,15 @@ export const formReducer = (state:FormStateData,action:navigateSteps)=>{
                  return{...state,authState:{
                     ...state.authState,isLoggedIn:action.payload.logoutStatus,navigateHome:action.payload.navigateUser
                 }}
+
+            case "clear_data":
+                return{...state,data:{
+                    ...state.data,userInfo:{
+                        ...state.data.userInfo,phone:null,
+                    },address:{
+                        ...state.data.address,street:action.payload,district:action.payload,city:action.payload,country:action.payload
+                    }
+                }}
         default:
             return state;
     }

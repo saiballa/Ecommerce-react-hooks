@@ -53,7 +53,7 @@ type logoutUser = {
     navigateUser:null
 }
 
-export type navigateSteps = {type:"update_Field",payload:ActionPayload} | {type:"current_step",payload:string} | {type:"add_Item",payload:FetchDataState} | {type:"remove_item",payload:number} | {type:"add_quantity",payload:number} | {type:"remove_Qyantity",payload:number} | {type:"clear_cart"} | {type:"set_Auth",payload:string} | {type:"set_logginUser",payload:logginUserType} |{type:"logOut",payload:logoutUser};
+export type navigateSteps = {type:"update_Field",payload:ActionPayload} | {type:"current_step",payload:string} | {type:"add_Item",payload:FetchDataState} | {type:"remove_item",payload:number} | {type:"add_quantity",payload:number} | {type:"remove_Qyantity",payload:number} | {type:"clear_cart"} | {type:"set_Auth",payload:string} | {type:"set_logginUser",payload:logginUserType} |{type:"logOut",payload:logoutUser} | {type:"clear_data",payload:null};
 
 export interface FormStateData{
     authState:{
