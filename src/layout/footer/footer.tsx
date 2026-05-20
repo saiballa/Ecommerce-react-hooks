@@ -81,7 +81,7 @@ const Footer:React.FC=()=>{
                     </li>
 
                     <li className="hover:text-blue-600 cursor-pointer transition">
-                        Exclusive 
+                        Exclusive Discounts
                     </li>
                 </ul>
                 </div>
